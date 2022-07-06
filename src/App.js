@@ -1,10 +1,12 @@
 import React, { useState } from "react"
+import { v4 as uuidv4 } from "uuid"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Header from "./components/Header"
 import FeedbackData from "./data/feedbackData"
 import FeedbackList from "./components/feedbackList"
 import FeedbackStat from "./components/feedbackStat"
 import FeedbackForm from "./components/feedbackForm"
-import { v4 as uuidv4 } from "uuid"
+import AboutPage from "./pages/aboutPage"
 
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData)
@@ -22,14 +24,27 @@ function App() {
     }
   }
   return (
-    <>
+    <Router>
       <Header />
       <div className="container">
-        <FeedbackForm handleAdd={addFeedback} />
-        <FeedbackStat feedback={feedback} />
-        <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <FeedbackForm handleAdd={addFeedback} />
+                <FeedbackStat feedback={feedback} />
+                <FeedbackList
+                  feedback={feedback}
+                  handleDelete={deleteFeedback}
+                />
+              </>
+            }
+          ></Route>
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
       </div>
-    </>
+    </Router>
   )
 }
 
