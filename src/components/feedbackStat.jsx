@@ -1,7 +1,9 @@
-import React from "react"
-import PropTypes from "prop-types"
+// eslint-disable-next-line
+import React, { useContext } from "react"
+import FeedbackContext from "../context/feedBackContext"
 
-function FeedbackStat({ feedback }) {
+function FeedbackStat() {
+  const { feedback } = useContext(FeedbackContext)
   // Calculate readings Average
   let average =
     feedback.reduce((acc, cur) => {
@@ -14,10 +16,6 @@ function FeedbackStat({ feedback }) {
       <h4>Average Rating: {isNaN(average) ? 0 : average}</h4>
     </div>
   )
-}
-
-FeedbackStat.propTypes = {
-  feedback: PropTypes.array.isRequired,
 }
 
 export default FeedbackStat
