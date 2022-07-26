@@ -11,9 +11,9 @@
       "text": "This is feeback item 2 coming from our backend"
     },
     {
-      "text": "This is updated feeback item 3 coming from our backend",
       "rating": 8,
-      "id": 3
+      "id": 3,
+      "text": "This is updated feeback item 3 coming from our backend"
     }
   ]
 }
